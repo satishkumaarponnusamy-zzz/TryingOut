@@ -7,11 +7,8 @@ namespace TryingOut.Trees
         private readonly List<T> _store;
         private readonly IComparer<T> _comparer;
 
-        public HeapType HeapType { get; private set; }
-
-        public Heap(HeapType heapType, IComparer<T> comparer)
+        public Heap(IComparer<T> comparer)
         {
-            HeapType = heapType;
             _store = new List<T> { default(T) };
             _comparer = comparer;
         }
@@ -22,8 +19,7 @@ namespace TryingOut.Trees
 
             for (var i = _store.Count - 1; i/2 >= 1; i = i/2)
             {
-                if ((_comparer.Compare(_store[i], _store[i/2]) > 0 && HeapType == HeapType.MaxHeap) || 
-                    (_comparer.Compare(_store[i], _store[i/2]) < 0 && HeapType == HeapType.MinHeap))
+                if (_comparer.Compare(_store[i], _store[i/2]) > 0)
                 {
                     Swap(i, i/2);
                 }

@@ -7,18 +7,10 @@ namespace TryingOut.Tests.Trees
     [TestFixture]
     class HeapTests
     {
-        [TestCase(HeapType.MinHeap)]
-        [TestCase(HeapType.MaxHeap)]
-        public void ShouldInitializeHeapType(HeapType heapType)
-        {
-            var heap = new Heap<int>(heapType, new SimpleIntComparer());
-            heap.HeapType.Should().Be(heapType);
-        }
-
         [Test]
         public void ShouldInsertDataIntoHeap()
         {
-            var heap = new Heap<Movie>(HeapType.MinHeap, new MovieRatingComparer());
+            var heap = new Heap<Movie>(new MaxMovieRatingComparer());
             
             heap.Insert(new Movie("A", 1.2));
             heap.Insert(new Movie("B", 2));
@@ -30,7 +22,7 @@ namespace TryingOut.Tests.Trees
         [Test]
         public void ShouldStoreDataAsMinHeap()
         {
-            var heap = new Heap<Movie>(HeapType.MinHeap, new MovieRatingComparer());
+            var heap = new Heap<Movie>(new MinMovieRatingComparer());
 
             heap.Insert(new Movie("A", 1.2));
             heap.Insert(new Movie("B", 2));
@@ -44,7 +36,7 @@ namespace TryingOut.Tests.Trees
         [Test]
         public void ShouldStoreDataAsMaxHeap()
         {
-            var heap = new Heap<Movie>(HeapType.MaxHeap, new MovieRatingComparer());
+            var heap = new Heap<Movie>(new MaxMovieRatingComparer());
 
             heap.Insert(new Movie("A", 1.2));
             heap.Insert(new Movie("B", 2));

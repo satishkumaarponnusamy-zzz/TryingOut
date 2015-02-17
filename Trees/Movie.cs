@@ -14,7 +14,7 @@ namespace TryingOut.Trees
         }
     }
 
-    public class MovieRatingComparer : IComparer<Movie>
+    public class MaxMovieRatingComparer : IComparer<Movie>
     {
         public int Compare(Movie x, Movie y)
         {
@@ -22,11 +22,11 @@ namespace TryingOut.Trees
         }
     }
 
-    public class SimpleIntComparer : IComparer<int>
+    public class MinMovieRatingComparer : IComparer<Movie>
     {
-        public int Compare(int x, int y)
+        public int Compare(Movie x, Movie y)
         {
-            return x.CompareTo(y);
+            return y.Rating.CompareTo(x.Rating);
         }
     }
 }
