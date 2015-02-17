@@ -47,6 +47,7 @@
     <Compile Include="Trees\Heap.cs" />
     <Compile Include="Trees\HeapType.cs" />
     <Compile Include="Trees\Movie.cs" />
+    <Compile Include="Trees\MovieComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

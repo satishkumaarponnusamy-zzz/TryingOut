@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TryingOut.Trees
 {
     public class Heap<T>
     {
         private readonly List<T> _store;
-        private readonly IComparer<T> _comparer;
+        private readonly Func<T, T, bool> _comparer;
 
-        public Heap(IComparer<T> comparer)
+        public Heap(Func<T, T, bool> comparer)
         {
             _store = new List<T> { default(T) };
             _comparer = comparer;
@@ -19,7 +20,7 @@ namespace TryingOut.Trees
 
             for (var i = _store.Count - 1; i/2 >= 1; i = i/2)
             {
-                if (_comparer.Compare(_store[i], _store[i/2]) > 0)
+                if (_comparer(_store[i], _store[i/2]))
                 {
                     Swap(i, i/2);
                 }

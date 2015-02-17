@@ -10,7 +10,7 @@ namespace TryingOut.Tests.Trees
         [Test]
         public void ShouldInsertDataIntoHeap()
         {
-            var heap = new Heap<Movie>(new MaxMovieRatingComparer());
+            var heap = new Heap<Movie>(MovieComparer.Name);
             
             heap.Insert(new Movie("A", 1.2));
             heap.Insert(new Movie("B", 2));
@@ -22,7 +22,7 @@ namespace TryingOut.Tests.Trees
         [Test]
         public void ShouldStoreDataAsMinHeap()
         {
-            var heap = new Heap<Movie>(new MinMovieRatingComparer());
+            var heap = new Heap<Movie>(MovieComparer.InverseRating);
 
             heap.Insert(new Movie("A", 1.2));
             heap.Insert(new Movie("B", 2));
@@ -36,7 +36,7 @@ namespace TryingOut.Tests.Trees
         [Test]
         public void ShouldStoreDataAsMaxHeap()
         {
-            var heap = new Heap<Movie>(new MaxMovieRatingComparer());
+            var heap = new Heap<Movie>(MovieComparer.Rating);
 
             heap.Insert(new Movie("A", 1.2));
             heap.Insert(new Movie("B", 2));
