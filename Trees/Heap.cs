@@ -7,18 +7,16 @@ namespace TryingOut.Trees
     {
         private readonly List<T> _store;
         private readonly Func<T, T, bool> _comparer;
-        private readonly bool _isReferenceOrNullableType;
 
         public Heap(Func<T, T, bool> comparer)
         {
             _store = new List<T> { default(T) };
             _comparer = comparer;
-            _isReferenceOrNullableType = default (T) == null;
         }
 
         public void Insert(T data)
         {
-            if (_isReferenceOrNullableType && data == null)
+            if (data == null)
             {
                 throw new ArgumentNullException("Cannot store null values in heap");
             }
