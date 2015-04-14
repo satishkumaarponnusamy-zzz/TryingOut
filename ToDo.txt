@@ -1,0 +1,7 @@
+1) Generic Heap - Min and Max
+2) String Comparison - Any language Culture
+3) Longest Common Substring
+4) Longest Palindromic Substring
+5) Find library to output trees in image or something else
+6) Auto complete - TRIE data structure (may be with weights for frequently searched item)
+7) Self balancing trees

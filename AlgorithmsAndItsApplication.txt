@@ -1,0 +1,9 @@
+Suffix Tree: http://en.wikipedia.org/wiki/Suffix_tree
+    String search, in O(m) complexity, where m is the length of the sub-string (but with initial O(n) time required to build the suffix tree for the string)
+    Finding the longest repeated substring
+    Finding the longest common substring
+    Finding the longest palindrome in a string
+
+Graphs
+http://www.graph-magics.com/practic_use.php
+http://programmers.stackexchange.com/questions/112812/how-to-learn-about-graph-algorithms-and-some-real-world-applications
