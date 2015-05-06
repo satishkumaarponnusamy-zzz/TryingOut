@@ -164,6 +164,17 @@ namespace TryingOut.Tests.Graphs
         [TestCaseSource("_testCases")]
         public void ShouldReturnOneWhenThereIsAConnectedComponents(Array image, int expectedNumberOfShapes)
         {
+            PrintImage("Before", image);
+
+            new ConnectedComponentLabelling().FindNumberOfShapes(image).Should().Be(expectedNumberOfShapes);
+            
+            PrintImage("After", image);
+        }
+
+        private static void PrintImage(string message, Array image)
+        {
+            Console.WriteLine(message);
+
             for (var i = 0; i < image.GetUpperBound(0) + 1; i++)
             {
                 for (var j = 0; j < image.GetUpperBound(1) + 1; j++)
@@ -173,8 +184,6 @@ namespace TryingOut.Tests.Graphs
                 }
                 Console.WriteLine();
             }
-
-            new ConnectedComponentLabelling().FindNumberOfShapes(image).Should().Be(expectedNumberOfShapes);
         }
     }
 }
