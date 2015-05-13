@@ -47,6 +47,7 @@
     <Compile Include="Graph\ShortestPathFinder.cs" />
     <Compile Include="Graph\ShortestPathFormatter.cs" />
     <Compile Include="Graph\Vertex.cs" />
+    <Compile Include="Math\MedianOfSortedArray.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trees\BinaryTree.cs" />
