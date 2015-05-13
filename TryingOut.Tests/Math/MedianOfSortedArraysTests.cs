@@ -47,6 +47,12 @@ namespace TryingOut.Tests.Math
             },
             new object[]
             {
+                new List<int> {9},
+                new List<int> {1,2,3,4,5,6,7},
+                4
+            },
+            new object[]
+            {
                 new List<int> {1},
                 new List<int> {1},
                 1
@@ -56,6 +62,18 @@ namespace TryingOut.Tests.Math
                 new List<int> {3,4},
                 new List<int> {1,2},
                 2
+            },
+            new object[]
+            {
+                new List<int> {3,4},
+                new List<int> {1,2,5,6},
+                3
+            },
+            new object[]
+            {
+                new List<int> {3,4},
+                new List<int> {1,2,5,6,7},
+                4
             },
             new object[]
             {
