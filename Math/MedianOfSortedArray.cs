@@ -36,14 +36,6 @@ namespace TryingOut.Math
             var len2 = endIndex2 - startIndex2 + 1;
             var mid2 = len2/2 + startIndex2;
 
-            Console.WriteLine("\nStep");
-            for(int i = startIndex1; i <= endIndex1; i++)
-                Console.Write(array1[i] + ",");
-            Console.WriteLine();
-            for (int i = startIndex2; i <= endIndex2; i++)
-                Console.Write(array2[i] + ",");
-            Console.WriteLine();
-
             if (len1 == 1)
             {
                 if (len2 == 1)
@@ -94,7 +86,7 @@ namespace TryingOut.Math
 
             return median1 > median2
                 ? GetMedian(array1, startIndex1, mid1 + extraLength1, array2, mid2, mid2 + (mid1 - startIndex1) + extraLength2)
-                : GetMedian(array1, mid1, endIndex1, array2, mid2 - (endIndex1 - mid1), mid2 + extraLength2);
+                : GetMedian(array1, mid1, endIndex1 + extraLength1, array2, mid2 - (endIndex1 - mid1), mid2 + extraLength2);
         }
 
         private static int GetMedian(IReadOnlyList<int> array, int startIndex, int endIndex)
