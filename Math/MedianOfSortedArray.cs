@@ -34,7 +34,15 @@ namespace TryingOut.Math
         {
             var len1 = endIndex1 - startIndex1 + 1;
             var len2 = endIndex2 - startIndex2 + 1;
-            var mid2 = len2/2;
+            var mid2 = len2/2 + startIndex2;
+
+            Console.WriteLine("\nStep");
+            for(int i = startIndex1; i <= endIndex1; i++)
+                Console.Write(array1[i] + ",");
+            Console.WriteLine();
+            for (int i = startIndex2; i <= endIndex2; i++)
+                Console.Write(array2[i] + ",");
+            Console.WriteLine();
 
             if (len1 == 1)
             {
@@ -80,23 +88,25 @@ namespace TryingOut.Math
                 return array1[startIndex1] > array2[mid2] ? System.Math.Min(array1[startIndex1], array2[mid2 + 1]) : array2[mid2];
             }
 
-            int mid1;
-            var median1 = GetMedian(array1, startIndex1, endIndex1, out mid1);
-            var median2 = GetMedian(array2, startIndex2, endIndex2, out mid2);
+            int mid1, extraLength1, extraLength2;
+            var median1 = GetMedian(array1, startIndex1, endIndex1, out mid1, out extraLength1);
+            var median2 = GetMedian(array2, startIndex2, endIndex2, out mid2, out extraLength2);
 
-            return median1 > median2 
-                ? GetMedian(array1, startIndex1, mid1, array2, mid2, mid2 + (mid1 - startIndex1))
-                : GetMedian(array1, mid1, endIndex1, array2, mid2 - (endIndex1 - mid1), mid2);
+            return median1 > median2
+                ? GetMedian(array1, startIndex1, mid1 + extraLength1, array2, mid2, mid2 + (mid1 - startIndex1) + extraLength2)
+                : GetMedian(array1, mid1, endIndex1, array2, mid2 - (endIndex1 - mid1), mid2 + extraLength2);
         }
 
         private static int GetMedian(IReadOnlyList<int> array, int startIndex, int endIndex)
         {
             int mid;
-            return GetMedian(array, startIndex, endIndex, out mid);
+            int extraLength;
+            return GetMedian(array, startIndex, endIndex, out mid, out extraLength);
         }
 
-        private static int GetMedian(IReadOnlyList<int> array, int startIndex, int endIndex, out int mid)
+        private static int GetMedian(IReadOnlyList<int> array, int startIndex, int endIndex, out int mid, out int extraLength)
         {
+            extraLength = 0;
             var count = endIndex - startIndex + 1;
             mid = (count / 2) + startIndex;
 
@@ -113,7 +123,9 @@ namespace TryingOut.Math
                 return array[mid];
             }
 
-            var val = (array[mid] + array[mid + 1])/2;
+            var val = (array[mid - 1] + array[mid])/2;
+            mid--;
+            extraLength = 1;
             return val;
         }
     }

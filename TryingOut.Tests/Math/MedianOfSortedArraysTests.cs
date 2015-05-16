@@ -80,6 +80,12 @@ namespace TryingOut.Tests.Math
                 new List<int>{3, 7, 12, 15, 18},
                 new List<int>{1, 2, 5, 10, 11, 12, 13, 19},
                 11
+            },
+            new object[]
+            {
+                new List<int> {9,10,11,12,13},
+                new List<int> {1,2,3,4,5,6,7,8},
+                7
             }
         };
 
