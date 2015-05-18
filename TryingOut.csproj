@@ -47,6 +47,8 @@
     <Compile Include="Graph\ShortestPathFinder.cs" />
     <Compile Include="Graph\ShortestPathFormatter.cs" />
     <Compile Include="Graph\Vertex.cs" />
+    <Compile Include="LinkedList\Palindrome.cs" />
+    <Compile Include="Math\ClockAngle.cs" />
     <Compile Include="Math\MedianOfSortedArray.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
