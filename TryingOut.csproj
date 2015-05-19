@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DP\SubArrayWithLargestSum.cs" />
     <Compile Include="General\OverlappingIntervals.cs" />
     <Compile Include="Graph\ConnectedComponentLabelling.cs" />
     <Compile Include="Graph\Graph.cs" />
