@@ -15,14 +15,13 @@ namespace TryingOut.DP
             var sum = 0;
             var subArray = new List<int>();
             var tempSubArray = new List<int>();
-            bool checkMax = false;
 
-            for (var i = 0; i < array.Count; i++)
+            foreach (int item in array)
             {
-                if (sum < sum + array[i])
+                if (sum < sum + item)
                 {
-                    sum += array[i];
-                    tempSubArray.Add(array[i]);
+                    sum += item;
+                    tempSubArray.Add(item);
                 }
                 else
                 {
