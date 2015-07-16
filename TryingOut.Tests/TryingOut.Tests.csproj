@@ -58,8 +58,12 @@
     <Compile Include="Math\ClockAngleTests.cs" />
     <Compile Include="Math\MedianOfSortedArraysTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Trees\AncestorsTests.cs" />
+    <Compile Include="Trees\AncestorsWithoutRecursionTests.cs" />
     <Compile Include="Trees\BinaryTreeTests.cs" />
     <Compile Include="Trees\HeapTests.cs" />
+    <Compile Include="Trees\TraversalTests.cs" />
+    <Compile Include="Trees\TreeWithLinksTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

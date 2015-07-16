@@ -5,3 +5,9 @@
 5) Find library to output trees in image or something else
 6) Auto complete - TRIE data structure (may be with weights for frequently searched item)
 7) Self balancing trees
+
+//July 11, 2015
+Find whether a string is palindrome or not, given a freedom (number of characters that doesn't need to match)
+There was brute force algo to find the first repitition of a byte data, find optimal solution, used hash set
+Tree with usual properties and each node points to the node on the right (if no right node then it is null) Given a tree with missing links fill them (optimize to use constant storage)
+Convert a string to palindrome with minimum number of appends at end of the string, give O(N) solution
