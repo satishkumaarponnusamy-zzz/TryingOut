@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DP\MinimumCoins.cs" />
     <Compile Include="DP\SubArrayWithLargestSum.cs" />
     <Compile Include="General\OverlappingIntervals.cs" />
     <Compile Include="Graph\ConnectedComponentLabelling.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Trees\Movie.cs" />
     <Compile Include="Trees\MovieComparer.cs" />
     <Compile Include="Trees\Node.cs" />
+    <Compile Include="Trees\TreeProperties.cs" />
     <Compile Include="Trees\Traversal.cs" />
     <Compile Include="Trees\TreeWithLinks.cs" />
   </ItemGroup>

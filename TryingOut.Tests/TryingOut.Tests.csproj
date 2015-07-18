@@ -63,6 +63,7 @@
     <Compile Include="Trees\BinaryTreeTests.cs" />
     <Compile Include="Trees\HeapTests.cs" />
     <Compile Include="Trees\TraversalTests.cs" />
+    <Compile Include="Trees\TreePropertiesTests.cs" />
     <Compile Include="Trees\TreeWithLinksTests.cs" />
   </ItemGroup>
   <ItemGroup>
