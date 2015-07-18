@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 using TryingOut.Trees;
 
@@ -137,7 +138,7 @@ namespace TryingOut.Tests.Trees
             new object[]
             {
                 new Node(1),
-                0
+                1
             },
             new object[]
             {
@@ -391,6 +392,198 @@ namespace TryingOut.Tests.Trees
         public void ShouldReturnDepthOfNodeInTree(Node node, int key, int depth)
         {
             TreeProperties.FindDepth(node, key).Should().Be(depth);
+        }
+
+        private readonly object[] _nodesAtDepth =
+        {
+            new object[]
+            {
+                null,
+                0,
+                null
+            },
+            new object[]
+            {
+                new Node(1),
+                0,
+                new List<int>{1}
+            },
+            new object[]
+            {
+                new Node(1),
+                2,
+                null
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3)),
+                0,
+                new List<int>{1}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3)),
+                1,
+                new List<int>{2, 3}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3)),
+                2,
+                null
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5)), new Node(3)),
+                2,
+                new List<int>{4, 5}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5)), new Node(3)),
+                3,
+                null
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5)), new Node(3)),
+                1,
+                new List<int>{2, 3}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5)), new Node(3)),
+                0,
+                new List<int>{1}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3, new Node(4), new Node(5))),
+                3,
+                null
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3, new Node(4), new Node(5))),
+                2,
+                new List<int>{4, 5}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3, new Node(4), new Node(5))),
+                1,
+                new List<int>{2, 3}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5)), new Node(3, new Node(6), new Node(7))),
+                3,
+                null
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5)), new Node(3, new Node(6), new Node(7))),
+                2,
+                new List<int>{4, 5, 6, 7}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5)), new Node(3, new Node(6), new Node(7))),
+                1,
+                new List<int>{2, 3}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5)), new Node(3, new Node(6), new Node(7))),
+                0,
+                new List<int>{1}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4, new Node(6), new Node(7)), new Node(5)), new Node(3)),
+                3,
+                new List<int>{6, 7}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3, new Node(4), new Node(5, new Node(6), new Node(7)))),
+                3,
+                new List<int>{6, 7}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3, new Node(4), new Node(5, new Node(6), new Node(7)))),
+                2,
+                new List<int>{4, 5}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3, new Node(4), new Node(5, new Node(6), new Node(7)))),
+                1,
+                new List<int>{2, 3}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5, new Node(6), new Node(7))), new Node(3)),
+                6,
+                null
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5, new Node(6), new Node(7))), new Node(3)),
+                3,
+                new List<int>{6, 7}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5, new Node(6), new Node(7))), new Node(3)),
+                2,
+                new List<int>{4, 5}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5, new Node(6), new Node(7))), new Node(3)),
+                1,
+                new List<int>{2, 3}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3, new Node(4, new Node(6), new Node(7)), new Node(5))),
+                3,
+                new List<int>{6, 7}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3, new Node(4, new Node(6), new Node(7)), new Node(5))),
+                5,
+                null
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3, new Node(4, new Node(6), null), new Node(5))),
+                3,
+                new List<int>{6}
+            },
+        };
+
+        [TestCaseSource("_nodesAtDepth")]
+        public void ShouldReturnNumberOfNodesAtDepth(Node node, int depth, List<int> nodesAtDepth)
+        {
+            TreeProperties.FindNumberOfNodesAtDepth(node, (uint)depth).Should().Be(nodesAtDepth == null ? 0 : nodesAtDepth.Count);
+        }
+
+        [TestCaseSource("_nodesAtDepth")]
+        public void ShouldReturnNodesAtDepth(Node node, int depth, List<int> expectedNodesAtDepth)
+        {
+            var nodesAtDepth = TreeProperties.FindNodesAtDepth(node, (uint)depth);
+            if (expectedNodesAtDepth == null)
+            {
+                nodesAtDepth.Should().BeNull();
+            }
+            else
+            {
+                nodesAtDepth.Should().ContainInOrder(nodesAtDepth);
+            }
         }
     }
 }
