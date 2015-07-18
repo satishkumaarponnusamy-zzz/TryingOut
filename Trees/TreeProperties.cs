@@ -28,11 +28,6 @@ namespace TryingOut.Trees
                 return -1;
             }
 
-            if (node.Left == null && node.Right == null)
-            {
-                return 0;
-            }
-
             return 1 + System.Math.Max(FindHeight(node.Left), FindHeight(node.Right));
         }
 
@@ -122,6 +117,22 @@ namespace TryingOut.Trees
 
             var rightDepth = FindDepth(node.Right, key);
             return rightDepth < 0 ? - 1:  1 + rightDepth;
+        }
+
+        //Number of nodes in longest path between two leaf nodes
+        public static int FindDiameterOfTree(Node node)
+        {
+            if (node == null)
+            {
+                return -1;
+            }
+
+            var includingRoot = FindHeight(node.Left) + FindHeight(node.Right) + 3;
+
+            //case for left or right subtree is null
+            var notIncludingRoot = System.Math.Max(FindDiameterOfTree(node.Left), FindDiameterOfTree(node.Right));
+
+            return System.Math.Max(includingRoot, notIncludingRoot);
         }
     }
 }

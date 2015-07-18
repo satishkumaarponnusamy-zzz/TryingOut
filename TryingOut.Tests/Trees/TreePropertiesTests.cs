@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
 using TryingOut.Trees;
@@ -584,6 +585,66 @@ namespace TryingOut.Tests.Trees
             {
                 nodesAtDepth.Should().ContainInOrder(nodesAtDepth);
             }
+        }
+
+        private readonly object[] _diameter =
+        {
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3, new Node(4, new Node(6, new Node(8), null), new Node(7)), new Node(5, null, new Node(9)))),
+                6
+            },
+            new object[]
+            {
+                new Node(1, null, new Node(3, new Node(4, null, new Node(6)), new Node(5))),
+                4
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(3), new Node(4, new Node(5), null)), null),
+                4
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, null, new Node(4, new Node(5), null)), new Node(3, new Node(6), new Node(7))),
+                6
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4, null, new Node(8)), new Node(5)), new Node(3, new Node(6, new Node(9), null), new Node(7))),
+                7
+            },
+            new object[]
+            {
+                null,
+                -1
+            },
+            new object[]
+            {
+                new Node(1),
+                1
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), null),
+                2
+            },
+            new object[]
+            {
+                new Node(1, null, new Node(2)),
+                2
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3)),
+                3
+            },
+        };
+
+        [TestCaseSource("_diameter")]
+        public void ShouldFindDiameterOfTree(Node node, int diameter)
+        {
+            TreeProperties.FindDiameterOfTree(node).Should().Be(diameter);
         }
     }
 }
