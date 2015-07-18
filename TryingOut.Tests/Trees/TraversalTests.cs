@@ -184,6 +184,65 @@ namespace TryingOut.Tests.Trees
             ThenVerifyTreeMatches(root, node).Should().BeTrue();
         }
 
+        private readonly object[] _testDataForPreAndPost =
+        {
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3)),
+                new List<int>{1, 2, 3},
+                new List<int>{2, 3, 1}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5)), new Node(3)),
+                new List<int>{1, 2, 4, 5, 3},
+                new List<int>{4, 5, 2, 3, 1}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3, new Node(4), new Node(5))),
+                new List<int>{1, 2, 3, 4, 5},
+                new List<int>{2, 4, 5, 3, 1}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5)), new Node(3, new Node(6), new Node(7))),
+                new List<int>{1, 2, 4, 5, 3, 6, 7},
+                new List<int>{4, 5, 2, 6, 7, 3, 1}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4, new Node(6), new Node(7)), new Node(5)), new Node(3)),
+                new List<int>{1, 2, 4, 6, 7, 5, 3},
+                new List<int>{6, 7, 4, 5, 2, 3, 1}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3, new Node(4), new Node(5, new Node(6), new Node(7)))),
+                new List<int>{1, 2, 3, 4, 5, 6, 7},
+                new List<int>{2, 4, 6, 7, 5, 3, 1}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2, new Node(4), new Node(5, new Node(6), new Node(7))), new Node(3)),
+                new List<int>{1, 2, 4, 5, 6, 7, 3},
+                new List<int>{4, 6, 7, 5, 2, 3, 1}
+            },
+            new object[]
+            {
+                new Node(1, new Node(2), new Node(3, new Node(4, new Node(6), new Node(7)), new Node(5))),
+                new List<int>{1, 2, 3, 4, 6, 7, 5},
+                new List<int>{2, 6, 7, 4, 5, 3, 1}
+            },
+        };
+
+        [TestCaseSource("_testDataForPreAndPost")]
+        public void ShouldConstructGivenTreeFromPreOrderAndPostorderTraversal(Node root, List<int> preOrder, List<int> postOrder)
+        {
+            var node = Traversal.ConstructBinaryTreeFromPreOrderAndPostOrder(preOrder, postOrder);
+            ThenVerifyTreeMatches(root, node).Should().BeTrue();
+        }
+
         private bool ThenVerifyTreeMatches(Node node1, Node node2)
         {
             if (node1 == null && node2 == null)

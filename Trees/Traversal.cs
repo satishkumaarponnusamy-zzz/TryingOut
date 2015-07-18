@@ -54,7 +54,6 @@ namespace TryingOut.Trees
             var inOrderRootIndex = mapOfInOrderDataToIndex[node.Data];
 
             node.Left = ConstructBinaryTreeFromPreAndInorder(preOrder, preOrderStartIndex, inOrderStartIndex, inOrderRootIndex - 1, mapOfInOrderDataToIndex);
-
             node.Right = ConstructBinaryTreeFromPreAndInorder(preOrder, preOrderStartIndex + inOrderRootIndex - inOrderStartIndex, inOrderRootIndex + 1, inOrderEndIndex, mapOfInOrderDataToIndex);
 
             return node;
@@ -185,6 +184,45 @@ namespace TryingOut.Trees
                 }
             }
             return postOrder;
+        }
+
+        public static Node ConstructBinaryTreeFromPreOrderAndPostOrder(List<int> preOrder, List<int> postOrder)
+        {
+            if (preOrder == null || postOrder == null || preOrder.Count == 0 || postOrder.Count == 0 || preOrder.Count != postOrder.Count)
+            {
+                throw new ArgumentException("Null or empty or number of nodes not matching");
+            }
+
+            var mapInOrderDataToIndex = new Dictionary<int, int>();
+            for (var i = 0; i < postOrder.Count; i++)
+            {
+                mapInOrderDataToIndex.Add(postOrder[i], i);
+            }
+
+            return ConstructBinaryTreeFromPreAndPostorder(preOrder, 0, 0, postOrder.Count - 1, mapInOrderDataToIndex);
+        }
+
+        private static Node ConstructBinaryTreeFromPreAndPostorder(List<int> preOrder, int preOrderStartIndex, int postOrderStartIndex, int postOrderEndIndex, Dictionary<int, int> mapInOrderDataToIndex)
+        {
+            var node = new Node(preOrder[preOrderStartIndex++]);
+
+            if (preOrderStartIndex > preOrder.Count - 1)
+            {
+                return node;
+            }
+
+            var postOrderLeftChildIndex = mapInOrderDataToIndex[preOrder[preOrderStartIndex]];
+
+            if (postOrderLeftChildIndex > postOrderEndIndex || postOrderLeftChildIndex < postOrderStartIndex)
+            {
+                return node;
+            }
+            
+            node.Left = ConstructBinaryTreeFromPreAndPostorder(preOrder, preOrderStartIndex, postOrderStartIndex, postOrderLeftChildIndex, mapInOrderDataToIndex);
+            node.Right = ConstructBinaryTreeFromPreAndPostorder(preOrder, preOrderStartIndex + (postOrderLeftChildIndex - postOrderStartIndex) + 1, 
+                postOrderLeftChildIndex + 1, postOrderEndIndex - 1, mapInOrderDataToIndex);
+            
+            return node;
         }
     }
 }
