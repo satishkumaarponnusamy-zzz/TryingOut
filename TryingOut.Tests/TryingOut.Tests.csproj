@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="DP\SubArrayWithLargestSumTests.cs" />
     <Compile Include="General\OverlappingIntervalsTests.cs" />
+    <Compile Include="General\TicTacToeTests.cs" />
     <Compile Include="Graphs\ConnectedComponentLabellingTests.cs" />
     <Compile Include="Graphs\ShortestPathTests.cs" />
     <Compile Include="LinkedList\PalindromeTests.cs" />

@@ -44,6 +44,7 @@
     <Compile Include="DP\MinimumCoins.cs" />
     <Compile Include="DP\SubArrayWithLargestSum.cs" />
     <Compile Include="General\OverlappingIntervals.cs" />
+    <Compile Include="General\TicTacToe.cs" />
     <Compile Include="Graph\ConnectedComponentLabelling.cs" />
     <Compile Include="Graph\Graph.cs" />
     <Compile Include="Graph\ShortestPath.cs" />
