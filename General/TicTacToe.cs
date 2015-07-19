@@ -95,60 +95,12 @@ namespace TryingOut.General
             if (rowNumber == columnNumber && UpdateMonitorForDiagonalAndCheckIfGameIsOver(entry, rowNumber - 1, _topDiagonalEntry))
             {
                 return _currentGameState;
-                //_topDiagonalEntry[rowNumber - 1] = entry;
-
-                //if (_topDiagonalEntry.All(x => x == entry))
-                //{
-                //    _currentGameState = entry == Player.One ? GameState.Player1 : GameState.Player2;
-                //    _previousGameState = _currentGameState;
-                //    return _currentGameState;
-                //}
             }
 
             if ((columnNumber == _board.NumberOfColumns - rowNumber + 1) && UpdateMonitorForDiagonalAndCheckIfGameIsOver(entry, columnNumber - 1, _bottomDiagonalEntry))
             {
                 return _currentGameState;
-                //_bottomDiagonalEntry[columnNumber - 1] = entry;
-                
-                //if (_bottomDiagonalEntry.All(x => x == entry))
-                //{
-                //    _currentGameState = entry == Player.One ? GameState.Player1 : GameState.Player2;
-                //    _previousGameState = _currentGameState;
-                //    return _currentGameState;
-                //}
             }
-
-            //if (UpdateMonitorForBottomDiagonalAndCheckIfGameIsOver(entry, rowNumber - 1, columnNumber - 1, _bottomDiagonalEntry, _bottomDiagonalEntryCount))
-            //{
-            //    return _currentGameState;
-            //}
-
-            /*
-            second set of optimization
-            UpdateMonitor(entry, rowNumber - 1, _rowEntry, _rowEntryCount);
-            if (CheckIfGameIsOver(rowNumber - 1, _rowEntry, _rowEntryCount))
-            {
-                return _currentGameState;
-            }
-
-            UpdateMonitor(entry, columnNumber - 1, _columnEntry, _columnEntryCount);
-            if (CheckIfGameIsOver(columnNumber - 1, _columnEntry, _columnEntryCount))
-            {
-                return _currentGameState;
-            }*/
-
-            //UpdateRowMonitor(entry, rowNumber - 1);
-            //UpdateColumnMonitor(entry, columnNumber - 1);
-
-            //if (CheckIfRowIfFull(rowNumber - 1))
-            //{
-            //    return _currentGameState;
-            //}
-
-            //if (CheckIfColumnIsFull(columnNumber - 1))
-            //{
-            //    return _currentGameState;
-            //}
 
             if (IsBoardFull())
             {
@@ -212,54 +164,6 @@ namespace TryingOut.General
         {
             return _previousGameState == GameState.Player1 || _previousGameState == GameState.Player2 || _previousGameState == GameState.NoResult;
         }
-
-        //private bool CheckIfColumnIsFull(int columnIndex)
-        //{
-        //    if (_columnEntryCount[columnIndex] == _columnEntryCount.Length && _columnEntry[columnIndex] != Player.NoResult)
-        //    {
-        //        _currentGameState = _columnEntry[columnIndex] == Player.One ? GameState.Player1 : GameState.Player2;
-        //        return true;
-        //    }
-        //    return false;
-        //}
-
-        //private bool CheckIfRowIfFull(int rowIndex)
-        //{
-        //    if (_rowEntryCount[rowIndex] == _rowEntryCount.Length && _rowEntry[rowIndex] != Player.NoResult)
-        //    {
-        //        _currentGameState = _rowEntry[rowIndex] == Player.One ? GameState.Player1 : GameState.Player2;
-        //        return true;
-        //    }
-        //    return false;
-        //}
-
-        //private void UpdateRowMonitor(char entry, int rowIndex)
-        //{
-        //    if (_rowEntry[rowIndex] == default (char))
-        //    {
-        //        _rowEntry[rowIndex] = entry;
-        //    }
-        //    else if(_rowEntry[rowIndex] != entry)
-        //    {
-        //        _rowEntry[rowIndex] = Player.NoResult;
-        //    }
-
-        //    _rowEntryCount[rowIndex] = _rowEntryCount[rowIndex] + 1;
-        //}
-
-        //private void UpdateColumnMonitor(char entry, int columnIndex)
-        //{
-        //    if (_columnEntry[columnIndex] == default(char))
-        //    {
-        //        _columnEntry[columnIndex] = entry;
-        //    }
-        //    else if (_rowEntry[columnIndex] != entry)
-        //    {
-        //        _columnEntry[columnIndex] = Player.NoResult;
-        //    }
-
-        //    _columnEntryCount[columnIndex] = _columnEntryCount[columnIndex] + 1;
-        //}
     }
 
     public class Player
