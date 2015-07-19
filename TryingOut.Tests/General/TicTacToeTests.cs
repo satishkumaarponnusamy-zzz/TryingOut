@@ -54,6 +54,12 @@ namespace TryingOut.Tests.General
             fifthMoveToWinByBottomDiagonal.SetValue(Player.Two, 1, 1);
             fifthMoveToWinByBottomDiagonal.SetValue(Player.Two, 3, 3);
 
+            var fifthMoveToWinByBottomDiagonal_Reverse = new Board(3, 3);
+            fifthMoveToWinByBottomDiagonal_Reverse.SetValue(Player.One, 1, 3);
+            fifthMoveToWinByBottomDiagonal_Reverse.SetValue(Player.One, 2, 2);
+            fifthMoveToWinByBottomDiagonal_Reverse.SetValue(Player.Two, 1, 1);
+            fifthMoveToWinByBottomDiagonal_Reverse.SetValue(Player.Two, 3, 3);
+
             _map.Add(1, emptyBoard);
             _map.Add(2, oneFilled);
             _map.Add(3, twoFilled);
@@ -62,6 +68,7 @@ namespace TryingOut.Tests.General
             _map.Add(6, fifthMoveToWinByTopDiagonal);
             _map.Add(7, fifthMoveToWinByTopDiagonal_Reverse);
             _map.Add(8, fifthMoveToWinByBottomDiagonal);
+            _map.Add(9, fifthMoveToWinByBottomDiagonal_Reverse);
         }
 
         private readonly object[] _game =
@@ -144,6 +151,14 @@ namespace TryingOut.Tests.General
                 Player.One,
                 1,
                 3,
+                GameState.Player1
+            },
+            new object[]
+            {
+                9,
+                Player.One,
+                3,
+                1,
                 GameState.Player1
             },
         };
