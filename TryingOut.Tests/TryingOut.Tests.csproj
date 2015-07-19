@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DP\MinimumCoinsTests.cs" />
     <Compile Include="DP\SubArrayWithLargestSumTests.cs" />
     <Compile Include="General\OverlappingIntervalsTests.cs" />
     <Compile Include="General\TicTacToeTests.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="LinkedList\PalindromeTests.cs" />
     <Compile Include="Math\ClockAngleTests.cs" />
     <Compile Include="Math\MedianOfSortedArraysTests.cs" />
+    <Compile Include="Math\PrimeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trees\AncestorsTests.cs" />
     <Compile Include="Trees\AncestorsWithoutRecursionTests.cs" />
