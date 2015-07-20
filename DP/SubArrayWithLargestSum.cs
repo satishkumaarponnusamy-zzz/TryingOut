@@ -16,7 +16,7 @@ namespace TryingOut.DP
             var subArray = new List<int>();
             var tempSubArray = new List<int>();
 
-            foreach (int item in array)
+            foreach (var item in array)
             {
                 if (sum < sum + item)
                 {
@@ -26,10 +26,10 @@ namespace TryingOut.DP
                 else
                 {
                     sum = 0;
-                    tempSubArray.Clear();
+                    tempSubArray = new List<int>();
                 }
 
-                if (maxSum < sum)
+                if (maxSum <= sum) //remove = to get previous elements making the same max sum, with = you get latest one
                 {
                     maxSum = sum;
                     subArray = tempSubArray;
